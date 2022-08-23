@@ -1,6 +1,7 @@
 const inquirer = require("inquirer");
 const jest = require("jest");
 const fs = require("fs");
+const generateMarkdown = require("./src/generateMarkdown");
 
 const questions = () => {
   return inquirer.prompt([
@@ -28,7 +29,6 @@ const questions = () => {
       type: "list",
       name: "position",
       message: "Are you an enginerr or intern?",
-      // Create choices of which license to use
       choices: ["Employee", "Intern"],
     },
   ]);
@@ -38,8 +38,8 @@ const questions = () => {
 const init = () => {
   questions()
     // Use writeFileSync method to use promises instead of a callback function
-    // .then((data) => fs.writeFileSync("index.html", generateHTML(data)))
-    // If it was successful console log Successfully wrote to README.md
+    .then((data) => fs.writeFileSync("./dist/index.html", generateMarkdown(data)))
+    // If it was successful console log Successfully Added Employee
     .then(() => console.log("Successfully Added Employee"))
     .catch((err) => console.error("error", err));
 };
