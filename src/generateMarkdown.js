@@ -9,16 +9,16 @@ const generateMarkdown = (data) => {
     <title>Employee Team Profile Generator</title>
   </head>
   <body>
-   <header class="jumbotron text-center bg-danger text-white">
+   <header class="jumbotron text-center bg-primary text-white">
     <h1>Our Team</h1>
    </header>
    <main>
-   <div class="card" style="width: 18rem;">
-      <div class="card-body">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body bg-light">
         <h5 class="card-title">${data.name}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">${data.position}</h6>
-        <p class="card-text">ID: ${data.id}</p>
-        <a href="${data.email}" class="card-link">${data.email}</a>
+        <h6 class="card-subtitle mb-2 text-muted">${data.position}</h6><hr>
+        <p class="card-text">ID: ${data.id}</p><hr>
+        <a href="${data.email}" class="card-link">${data.email}</a><hr>
         <p class="card-text">${data.number}</p>
       </div>
     </div>
