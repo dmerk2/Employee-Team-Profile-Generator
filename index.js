@@ -5,20 +5,12 @@ const jest = require("jest");
 const fs = require("fs");
 // Creating profile from generateMarkdown file
 const generateMarkdown = require("./src/generateMarkdown");
-
+// Empty array to add teamMembers
 const teamMembers = [];
 
-// const getName = () => {
-//   return inquirer.prompt([
-//     {
-//       type: "input",
-//       name: "name",
-//       message: "What is your name?"
-//     },
-//   ])
-// }
 
-const questions = () => {
+// Function using inquirer for questions to ask for a Manager
+const addManager = () => {
   return inquirer.prompt([
     {
       type: "input",
@@ -72,17 +64,17 @@ const questions = () => {
         }
       },
     },
-    {
-      type: "list",
-      name: "position",
-      message: "Are you an engineer or intern?",
-      choices: ["Engineer", "Intern"],
-    },
-  ]);
+  ])
+  .then(managerInput => {
+    const {name, id, email, number} = managerInput;
+    // Create a new promise named Manager with the params needed
+    const manager = new Manager (name, id, email, number);
+    console.log(manager);
+  })
 };
 
 const init = () => {
-  questions()
+  addManager()
     // Write a new file taking input from generateMarkdown file and writing a new index.html
     .then((data) =>
       fs.writeFileSync("./dist/index.html", generateMarkdown(data))
