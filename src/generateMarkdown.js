@@ -1,5 +1,5 @@
 const generateMarkdown = (data) => {
-  return `<h1>${data.name}</h1>`
-}
+  return `testing ${data.name}`;
+};
 
 module.exports = generateMarkdown;
