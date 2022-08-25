@@ -13,13 +13,13 @@ const generateMarkdown = (data) => {
     <h1>Our Team</h1>
    </header>
    <main>
-    <div class="card ml-2 text-white shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
+    <div class="d-flex row justify-content-around card ml-2 text-white shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
       <div class="card bg-light">
-        <h5 class="card-header bg-primary">${data.name}</h5>
-        <h6 class="card-subtitle pb-2 bg-primary text-white pl-2">${data.position}</h6><hr>
-        <p class="card-text text-dark m-0 ml-2">ID: ${data.id}</p><hr>
+        <h3 class="card-header bg-primary pl-2">${data.name}</h3>
+        <h4 class="card-subtitle pb-2 bg-primary text-white pl-2">${data.position}</h4>
+        <p class="card-text text-dark m-0 mt-2 ml-2">ID: ${data.id}</p><hr>
         <a href="${data.email}" class="card-link ml-2">${data.email}</a><hr>
-        <p class="card-text text-dark mb-3 ml-2">${data.number}</p>
+        <p class="card-text text-dark mb-3 ml-2">${data.officeNumber}</p>
       </div>
     </div>
 
