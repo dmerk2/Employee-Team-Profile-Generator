@@ -14,6 +14,8 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
+let employee;
+
 // Function using inquirer for questions to add a Manager
 const addManager = () => {
   return inquirer.prompt([
@@ -194,20 +196,20 @@ const addManager = () => {
 //   ])
 // };
 
-// const renderPosition = (position) => {
-//   if (position === "Intern") {
-//     console.log("Intern")
-//     return "Intern";
-//   } else if (position === "Engineer") {
-//     console.log("Engineer")
-//     return "Engineer";
-//   } else if (position === "Manager") {
-//     console.log("Mangager")
-//     return "Manager"
-//   } else {
-//     return ""
-//   }
-// };
+const renderPosition = (position) => {
+  if (position === "Intern") {
+    console.log("Intern")
+    employee = new Intern (name, id, email, school);
+  } else if (position === "Engineer") {
+    console.log("Engineer")
+    employee = new Engineer (name, id, email, github);
+  } else if (position === "Manager") {
+    console.log("Mangager")
+    employee = new Manager (name, id, email, officeNumber);
+  } else {
+    return ""
+  }
+};
 
 const init = () => {
   addManager()
