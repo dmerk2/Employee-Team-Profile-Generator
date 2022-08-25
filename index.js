@@ -9,6 +9,11 @@ const { choices } = require("yargs");
 // Empty array to add teamMembers
 const teamMembers = [];
 
+// Team profiles
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+
 // Function using inquirer for questions to add a Manager
 const addManager = () => {
   return inquirer.prompt([
