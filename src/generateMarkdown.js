@@ -6,6 +6,7 @@ const generateMarkdown = (data) => {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./dist/style.css">
     <title>Employee Team Profile Generator</title>
   </head>
   <body>
@@ -18,8 +19,8 @@ const generateMarkdown = (data) => {
         <h3 class="card-header bg-primary pl-2">${data.name}</h3>
         <h4 class="card-subtitle pb-2 bg-primary text-white pl-2">${data.position}</h4>
         <p class="card-text text-dark m-0 mt-2 ml-2">ID: ${data.id}</p><hr>
-        <a href="${data.email}" class="card-link ml-2">${data.email}</a><hr>
-        <p class="card-text text-dark mb-3 ml-2">${data.officeNumber}</p>
+       <p class="m-0 text-dark ml-2">Email: <a href="${data.email}" class="card-link ml-2">${data.email}</a></p><hr>
+        <p class="card-text text-dark mb-3 ml-2">${data.office}</p>
       </div>
     </div>
 
