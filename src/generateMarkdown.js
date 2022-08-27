@@ -20,6 +20,7 @@ const generateMarkdown = (data) => {
         <p class="card-text text-dark m-0 mt-2 ml-2">ID: ${data.id}</p><hr>
        <p class="m-0 text-dark ml-2">Email: <a href="${data.email}" class="card-link ml-2">${data.email}</a></p><hr>
        <p class="card-text text-dark mb-3 ml-2">${data.office}</p>
+       <p class="card-text text-dark mb-3 ml-2">${data.confirmEmployee}</p>
       </div>
     </div>
 
