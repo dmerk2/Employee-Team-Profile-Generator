@@ -10,9 +10,9 @@ const { choices } = require("yargs");
 const teamMembers = [];
 
 // Team profiles
-const Manager = require('./lib/Manager');
-const Engineer = require('./lib/Engineer');
-const Intern = require('./lib/Intern');
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 const { addListener } = require("process");
 
 // Add a new employee
@@ -35,6 +35,32 @@ const addManager = () => {
       },
     },
     {
+      type: "input",
+      name: "id",
+      message: "What is your employee ID?",
+      validate: (id) => {
+        if (id) {
+          return true;
+        } else {
+          console.log("Please enter your employee ID");
+          return false;
+        }
+      },
+    },
+    {
+      type: "input",
+      name: "email",
+      message: "What is your email?",
+      validate: (email) => {
+        if (email) {
+          return true;
+        } else {
+          console.log("Please enter your email");
+          return false;
+        }
+      },
+    },
+    {
       type: "list",
       name: "position",
       message: "What is your job title?",
@@ -42,184 +68,150 @@ const addManager = () => {
     },
     {
       type: "input",
-      name: "id",
-      message: "What is your employee ID?",
-      validate: (id) => {
-        if (id) {
-          return true;
-        } else {
-          console.log("Please enter your employee ID");
-          return false;
-        }
-      },
-    },
-    {
-      type: "input",
-      name: "email",
-      message: "What is your email?",
-      validate: (email) => {
-        if (email) {
-          return true;
-        } else {
-          console.log("Please enter your email");
-          return false;
-        }
-      },
-    },
-    {
-      type: "input",
       name: "office",
-      message: "What is your office number?",
-      validate: (office) => {
-        if (office) {
-          return true;
-        } else {
-          console.log("Please enter your office number");
-          return false;
-        }
-      },
+      message: "What is your office number?"
     },
-  ]);
+  ])
 };
 
 // Function using inquirer for questions to add an Engineer
-const addEngineer = () => {
-  return inquirer.prompt([
-    {
-      type: "input",
-      name: "name",
-      message: "What is your name?",
-      validate: (nameInput) => {
-        if (nameInput) {
-          return true;
-        } else {
-          console.log("Please enter your name")
-          return false;
-        }
-      },
-    },
-    {
-      type: "input",
-      name: "id",
-      message: "What is your employee ID?",
-      validate: (id) => {
-        if (id) {
-          return true;
-        } else {
-          console.log("Please enter your employee ID");
-          return false;
-        }
-      },
-    },
-    {
-      type: "input",
-      name: "email",
-      message: "What is your email?",
-      validate: (email) => {
-        if (email) {
-          return true;
-        } else {
-          console.log("Please enter your email");
-          return false;
-        }
-      },
-    },
-    {
-      type: "input",
-      name: "github",
-      message: "What is your Github username?",
-      validate: (github) => {
-        if (github) {
-          return true;
-        } else {
-          console.log("Please enter your GitHub username");
-          return false;
-        }
-      },
-    },
-  ])
-};
+// const addEngineer = () => {
+//   return inquirer.prompt([
+//     {
+//       type: "input",
+//       name: "name",
+//       message: "What is your name?",
+//       validate: (nameInput) => {
+//         if (nameInput) {
+//           return true;
+//         } else {
+//           console.log("Please enter your name");
+//           return false;
+//         }
+//       },
+//     },
+//     {
+//       type: "input",
+//       name: "id",
+//       message: "What is your employee ID?",
+//       validate: (id) => {
+//         if (id) {
+//           return true;
+//         } else {
+//           console.log("Please enter your employee ID");
+//           return false;
+//         }
+//       },
+//     },
+//     {
+//       type: "input",
+//       name: "email",
+//       message: "What is your email?",
+//       validate: (email) => {
+//         if (email) {
+//           return true;
+//         } else {
+//           console.log("Please enter your email");
+//           return false;
+//         }
+//       },
+//     },
+//     {
+//       type: "input",
+//       name: "github",
+//       message: "What is your Github username?",
+//       validate: (github) => {
+//         if (github) {
+//           return true;
+//         } else {
+//           console.log("Please enter your GitHub username");
+//           return false;
+//         }
+//       },
+//     },
+//   ]);
+// };
 
 // Function using inquirer for questions to add an Intern
-const addIntern = () => {
-  return inquirer.prompt([
-    {
-      type: "input",
-      name: "name",
-      message: "What is your name?",
-      validate: (nameInput) => {
-        if (nameInput) {
-          return true;
-        } else {
-          console.log("Please enter your name")
-          return false;
-        }
-      },
-    },
-    {
-      type: "input",
-      name: "id",
-      message: "What is your employee ID?",
-      validate: (id) => {
-        if (id) {
-          return true;
-        } else {
-          console.log("Please enter your employee ID");
-          return false;
-        }
-      },
-    },
-    {
-      type: "input",
-      name: "email",
-      message: "What is your email?",
-      validate: (email) => {
-        if (email) {
-          return true;
-        } else {
-          console.log("Please enter your email");
-          return false;
-        }
-      },
-    },
-    {
-      type: "input",
-      name: "school",
-      message: "What school did you attend?",
-      validate: (school) => {
-        if (school) {
-          return true;
-        } else {
-          console.log("Please enter what school you attended");
-          return false;
-        }
-      },
-    },
-  ])
-};
+// const addIntern = () => {
+//   return inquirer.prompt([
+//     {
+//       type: "input",
+//       name: "name",
+//       message: "What is your name?",
+//       validate: (nameInput) => {
+//         if (nameInput) {
+//           return true;
+//         } else {
+//           console.log("Please enter your name");
+//           return false;
+//         }
+//       },
+//     },
+//     {
+//       type: "input",
+//       name: "id",
+//       message: "What is your employee ID?",
+//       validate: (id) => {
+//         if (id) {
+//           return true;
+//         } else {
+//           console.log("Please enter your employee ID");
+//           return false;
+//         }
+//       },
+//     },
+//     {
+//       type: "input",
+//       name: "email",
+//       message: "What is your email?",
+//       validate: (email) => {
+//         if (email) {
+//           return true;
+//         } else {
+//           console.log("Please enter your email");
+//           return false;
+//         }
+//       },
+//     },
+//     {
+//       type: "input",
+//       name: "school",
+//       message: "What school did you attend?",
+//       validate: (school) => {
+//         if (school) {
+//           return true;
+//         } else {
+//           console.log("Please enter what school you attended");
+//           return false;
+//         }
+//       },
+//     },
+//   ]);
+// };
 
 // Create new employee based on user input data
-const renderPosition = (position) => {
-  if (position === "Intern") {
-    console.log("Intern")
-    employee = new Intern (name, id, email, school);
-  } else if (position === "Engineer") {
-    console.log("Engineer")
-    employee = new Engineer (name, id, email, github);
-  } else if (position === "Manager") {
-    console.log("Manager")
-    employee = new Manager (name, id, email, office);
-  } else {
-    return ""
-  }
-  teamMembers.push(employee);
-};
+// const renderPosition = (position) => {
+//   if (position === "Intern") {
+//     console.log("Intern");
+//     employee = new Intern(name, id, email, school);
+//   } else if (position === "Engineer") {
+//     console.log("Engineer");
+//     employee = new Engineer(name, id, email, github);
+//   } else if (position === "Manager") {
+//     console.log("Manager");
+//     employee = new Manager(name, id, email, office);
+//   } else {
+//     return "";
+//   }
+//   teamMembers.push(employee);
+// };
 
 const init = () => {
   addManager()
-  // addEngineer()
-  // addIntern()
-  // renderPosition(position)
+    // addEngineer()
+    // addIntern()
+    // renderPosition(position)
     // Write a new file taking input from generateMarkdown file and writing a new index.html
     .then((data) =>
       fs.writeFileSync("./dist/index.html", generateMarkdown(data))
