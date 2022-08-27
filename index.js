@@ -207,7 +207,7 @@ const renderPosition = (position) => {
     console.log("Engineer")
     employee = new Engineer (name, id, email, github);
   } else if (position === "Manager") {
-    console.log("Mangager")
+    console.log("Manager")
     employee = new Manager (name, id, email, office);
   } else {
     return ""
