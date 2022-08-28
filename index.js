@@ -33,23 +33,23 @@ const addEmployee = () => {
       }
       if (data.role === "Intern") {
         addIntern();
-        // data = new Intern(name, id, email, school);
-        // teamMembers.push(data);
       }
     });
 };
-// Function using inquirer for questions
+
+// Function to add new manager
 const addManager = () => {
   return inquirer
     .prompt([
       {
         type: "input",
         name: "name",
+        message: "What is your name?"
       },
       {
         type: "input",
         name: "id",
-        message: "What is your manager ID?",
+        message: "What is your employee ID?",
       },
       {
         type: "input",
@@ -66,7 +66,7 @@ const addManager = () => {
       const { name, id, email, office } = managerInput;
       const manager = new Manager(name, id, email, office);
       teamMembers.push(manager);
-      console.log(`${manager.name} added`, teamMembers);
+      console.log(`${manager.name} added`);
     });
 };
 
@@ -77,7 +77,7 @@ const addEngineer = () => {
       {
         type: "input",
         name: "name",
-        message: "Please enter your name.",
+        message: "What is your name?",
       },
       {
         type: "input",
