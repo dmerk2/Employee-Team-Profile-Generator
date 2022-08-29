@@ -36,13 +36,14 @@ const addEmployee = () => {
       }
     })
     .then((teamMembers) => {
-      return generateMarkdown(teamMembers);
+      generateMarkdown(teamMembers);
+      console.log(teamMembers);
     })
     .then((data) =>
       fs.writeFileSync("./dist/index.html", generateMarkdown(data))
     )
     .then(() => console.log(`Successfully Added Employee: ${data.name}`))
-    .catch((err) => console.error("Cannot create markdown!"));
+    .catch((err) => console.error("Error:", err, "Cannot create markdown!"));
   // .then(confirmEmployee)
   // .then(confirmAddEmployee => {
   //   if (confirmAddEmployee) {
