@@ -148,6 +148,7 @@ const { addManager, addEngineer, addIntern } = addNewEmployee();
 // Loop through team members generate HTML card if/then statement
 // Global html... iterate teammembers... add storeTeamMemb
 const storeTeamMembers = () => {
+  fs.writeFileSync("./dist/index.html", generateMarkdown(teamMembers[0]));
 };
 
 addEmployee();

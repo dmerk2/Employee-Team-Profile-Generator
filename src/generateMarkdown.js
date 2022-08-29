@@ -19,13 +19,9 @@ const generateMarkdown = (data) => {
         <h4 class="card-subtitle pb-2 bg-primary text-white pl-2">${data.position}</h4>
         <p class="card-text text-dark m-0 mt-2 ml-2">ID: ${data.id}</p><hr>
        <p class="m-0 text-dark ml-2">Email: <a href="${data.email}" class="card-link ml-2">${data.email}</a></p><hr>
-if (data.role === "manager") {
-	      return <p class="card-text text-dark mb-3 ml-2">${data.office}</p>
-} else if (data.role === "engineer"){
-	return <p class="card-text text-dark mb-3 ml-2">${data.github}</p>
-} else {
-  return <p class="card-text text-dark mb-3 ml-2">${data.school}</p>
-}
+      <p class="card-text text-dark mb-3 ml-2">${data.office}</p>
+      <p class="card-text text-dark mb-3 ml-2">${data.github}</p>
+      <p class="card-text text-dark mb-3 ml-2">${data.school}</p>
       </div>
     </div>
 
