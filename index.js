@@ -34,8 +34,37 @@ const addEmployee = () => {
       if (data.role === "Intern") {
         addIntern();
       }
-    });
+    })
+    .then((teamMembers) => {
+      return generateMarkdown(teamMembers);
+    })
+    .then((data) =>
+      fs.writeFileSync("./dist/index.html", generateMarkdown(data))
+    )
+    .then(() => console.log(`Successfully Added Employee: ${data.name}`))
+    .catch((err) => console.error("Cannot create markdown!"));
+  // .then(confirmEmployee)
+  // .then(confirmAddEmployee => {
+  //   if (confirmAddEmployee) {
+  //     addEmployee(teamMembers);
+  //     console.log(confirmAddEmployee);
+  //     console.log(teamMembers)
+  //   } else {
+  //     teamMembers;
+  //   }
+  // })
 };
+
+// const confirmEmployee = () => {
+//   return inquirer.prompt([
+//     {
+//       type: "confirm",
+//       name: 'confirmAddEmployee',
+//       message: 'Would you like to add more employees?',
+//       default: false
+//     },
+//   ])
+// };
 
 // Function to add new manager
 const addManager = () => {
@@ -44,7 +73,7 @@ const addManager = () => {
       {
         type: "input",
         name: "name",
-        message: "What is your name?"
+        message: "What is your name?",
       },
       {
         type: "input",
@@ -66,6 +95,7 @@ const addManager = () => {
       const { name, id, email, office } = managerInput;
       const manager = new Manager(name, id, email, office);
       teamMembers.push(manager);
+      // addEmployee();
       console.log(`${manager.name} added`);
     });
 };
@@ -97,8 +127,11 @@ const addEngineer = () => {
     ])
     .then((engineerInput) => {
       const { name, id, email, office } = engineerInput;
+      console.log(engineerInput);
       const engineer = new Engineer(name, id, email, office);
+      console.log(engineer);
       teamMembers.push(engineer);
+      // addEmployee();
       console.log(`${engineer.name}added`);
     });
 };
@@ -129,23 +162,12 @@ const addIntern = () => {
       },
     ])
     .then((internInput) => {
-      const { name, id, email, office } = internInput;
-      const intern = new Intern(name, id, email, office);
+      const { name, id, email, school } = internInput;
+      const intern = new Intern(name, id, email, school);
       teamMembers.push(intern);
+      // addEmployee()
       console.log(`${intern.name} added`);
     });
 };
 
-const init = () => {
-  addEmployee()
-    // Write a new file taking input from generateMarkdown file and writing a new index.html
-    .then((data) =>
-      fs.writeFileSync("./dist/index.html", generateMarkdown(data))
-    )
-    // If it was successful console log Successfully Added Employee
-    .then(() => console.log(`Successfully Added Employee: ${data.name}`))
-    // If there are any errors console log error
-    .catch((err) => console.error("error", err));
-};
-
-init();
+addEmployee();
