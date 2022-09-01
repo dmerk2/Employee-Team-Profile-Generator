@@ -1,6 +1,3 @@
-/// Here is our team = [Manager, Engineer, Engineer, Intern]
-// Which OBJECT gets sent to which function(?)
-// let team = [Manager, Engineer, Intern];
 
 const generateMarkdown = (team) => {
   console.log(team);
@@ -62,7 +59,7 @@ const buildManagerCard = (data) => {
        <p class="m-0 text-dark ml-2">Email: <a href="${
          data.email
        }" class="card-link ml-2">${data.email}</a></p><hr>
-      <p class="card-text text-dark mb-3 ml-2">${data.office}</p>
+      <p class="card-text text-dark mb-3 ml-2">${data.officeNumber}</p>
       </div>
     </div>`;
 }
