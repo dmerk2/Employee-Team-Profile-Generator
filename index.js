@@ -68,7 +68,6 @@ const addNewEmployee = () => {
       .then((managerInput) => {
         const { name, id, email, office } = managerInput;
         const manager = new Manager(name, id, email, office);
-        console.log(managerInput, manager, teamMembers);
         teamMembers.push(manager);
         console.log(`${manager.name} added`);
       });
@@ -101,9 +100,7 @@ const addNewEmployee = () => {
       ])
       .then((engineerInput) => {
         const { name, id, email, office } = engineerInput;
-        console.log(engineerInput);
         const engineer = new Engineer(name, id, email, office);
-        console.log(engineer);
         teamMembers.push(engineer);
         console.log(`${engineer.name}added`);
       });
@@ -149,6 +146,7 @@ const storeTeamMembers = () => {
   fs.writeFileSync("./dist/index.html", generateMarkdown(teamMembers));
 };
 
+// Creating start function to create asynch method
 const start = async () =>{
   while(true){
     await addEmployee();

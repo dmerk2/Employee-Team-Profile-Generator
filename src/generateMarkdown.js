@@ -3,11 +3,10 @@ const generateMarkdown = (team) => {
   console.log(team);
 
   let teamContainers = [];
-
+// Iterate through team an return the final HTML cards
   for (let i = 0; i < team.length; i++) {
     if (team[i].getRole() === "Manager") {
       let tempCard = buildManagerCard(team[i]);
-      // console.log(tempCard);
       teamContainers.push(tempCard);
     }
     if (team[i].getRole() === "Engineer") {
@@ -19,13 +18,12 @@ const generateMarkdown = (team) => {
       teamContainers.push(tempCard);
     }
   }
-
-  console.log(teamContainers);
-
+  
   let finalHTML = buildHTML(teamContainers);
   return finalHTML;
 };
 
+// Global HTML
 const buildHTML = (team) => {
   return `<!DOCTYPE html>
   <html lang="en">
