@@ -20,25 +20,29 @@ const addEmployee = () => {
         type: "list",
         name: "role",
         message: "Which member do you need to add?",
-        choices: ["Manager", "Engineer", "Intern"],
+        choices: ["Manager", "Engineer", "Intern", "Finish"],
       },
     ])
     .then((data) => {
       if (data.role === "Manager") {
-        addManager();
+        return addManager();  
       }
       if (data.role === "Engineer") {
-        addEngineer();
+        return addEngineer();
       }
       if (data.role === "Intern") {
-        addIntern();
+        return addIntern();
+      }
+      if (data.role === "Finish") {
+        storeTeamMembers();
+        process.exit();
       }
     });
 };
 
 const addNewEmployee = () => {
   const addManager = () => {
-    inquirer
+    return inquirer
       .prompt([
         {
           type: "input",
@@ -66,15 +70,13 @@ const addNewEmployee = () => {
         const manager = new Manager(name, id, email, office);
         console.log(managerInput, manager, teamMembers);
         teamMembers.push(manager);
-        console.log(teamMembers);
         console.log(`${manager.name} added`);
-        storeTeamMembers();
       });
   };
 
   // Function to add new engineer
   const addEngineer = () => {
-    inquirer
+    return inquirer
       .prompt([
         {
           type: "input",
@@ -104,13 +106,12 @@ const addNewEmployee = () => {
         console.log(engineer);
         teamMembers.push(engineer);
         console.log(`${engineer.name}added`);
-        storeTeamMembers();
       });
   };
 
   // Function to add new Intern
   const addIntern = () => {
-    inquirer
+    return inquirer
       .prompt([
         {
           type: "input",
@@ -138,17 +139,20 @@ const addNewEmployee = () => {
         const intern = new Intern(name, id, email, school);
         teamMembers.push(intern);
         console.log(`${intern.name} added`);
-        storeTeamMembers();
       });
   };
   return { addManager, addEngineer, addIntern };
 };
 const { addManager, addEngineer, addIntern } = addNewEmployee();
 
-// Loop through team members generate HTML card if/then statement
-// Global html... iterate teammembers... add storeTeamMemb
 const storeTeamMembers = () => {
-  fs.writeFileSync("./dist/index.html", generateMarkdown(teamMembers[0]));
+  fs.writeFileSync("./dist/index.html", generateMarkdown(teamMembers));
 };
 
-addEmployee();
+const start = async () =>{
+  while(true){
+    await addEmployee();
+  }
+}
+
+start();
