@@ -50,9 +50,9 @@ Using node.js and installing npm inquirer and jest
 ## Video of Application
 ---
 
-!['Video of app'](Develop/media/Walk-Through-Video.gif)
+!['Video of app'](Assets\Employee-Team-Profile-Walk-Through-Video.gif)
 
-<a href="">Link to view the application in action</a>
+<a href="https://watch.screencastify.com/v/uDBH5z8NZYTNzwnOaPmE">Link to view the application in action</a>
 
 ## Usage
 ---
