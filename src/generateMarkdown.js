@@ -1,9 +1,8 @@
-
 const generateMarkdown = (team) => {
   console.log(team);
 
   let teamContainers = [];
-// Iterate through team an return the final HTML cards
+  // Iterate through team an return the final HTML cards
   for (let i = 0; i < team.length; i++) {
     if (team[i].getRole() === "Manager") {
       let tempCard = buildManagerCard(team[i]);
@@ -18,7 +17,7 @@ const generateMarkdown = (team) => {
       teamContainers.push(tempCard);
     }
   }
-  
+
   let finalHTML = buildHTML(teamContainers);
   return finalHTML;
 };
@@ -49,7 +48,7 @@ const buildHTML = (team) => {
 };
 
 const buildManagerCard = (data) => {
-  return `<div class="d-flex col justify-content-around card ml-2 text-white shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
+  return `<div class="d-inline-flex col justify-content-around card ml-2 text-white shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
       <div class="card bg-light">
         <h3 class="card-header bg-primary pl-2">${data.name}</h3> 
         <h4 class="card-subtitle pb-2 bg-primary text-white pl-2">${data.getRole()}</h4>
@@ -60,7 +59,7 @@ const buildManagerCard = (data) => {
       <p class="card-text text-dark mb-3 ml-2">${data.officeNumber}</p>
       </div>
     </div>`;
-}
+};
 const buildInternCard = (data) => {
   return `<div class="d-inline-flex col justify-content-around card ml-2 text-white shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
       <div class="card bg-light">
@@ -73,7 +72,7 @@ const buildInternCard = (data) => {
       <p class="card-text text-dark mb-3 ml-2">${data.school}</p>
       </div>
     </div>`;
-}
+};
 const buildEngineerCard = (data) => {
   return `<div class="d-inline-flex col justify-content-around card ml-2 text-white shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
       <div class="card bg-light">
@@ -86,6 +85,6 @@ const buildEngineerCard = (data) => {
       <p class="card-text text-dark mb-3 ml-2">${data.github}</p>
       </div>
     </div>`;
-}
+};
 
 module.exports = generateMarkdown;

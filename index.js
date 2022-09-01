@@ -13,6 +13,8 @@ const Manager = require("./lib/manager");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
 const Employee = require("./lib/employee");
+
+// Adding new employees
 const addEmployee = () => {
   return inquirer
     .prompt([
@@ -35,6 +37,7 @@ const addEmployee = () => {
       }
       if (data.role === "Finish") {
         storeTeamMembers();
+        // If user finishes the function will end
         process.exit();
       }
     });
@@ -99,8 +102,8 @@ const addNewEmployee = () => {
         },
       ])
       .then((engineerInput) => {
-        const { name, id, email, office } = engineerInput;
-        const engineer = new Engineer(name, id, email, office);
+        const { name, id, email, github } = engineerInput;
+        const engineer = new Engineer(name, id, email, github);
         teamMembers.push(engineer);
         console.log(`${engineer.name}added`);
       });
@@ -140,13 +143,14 @@ const addNewEmployee = () => {
   };
   return { addManager, addEngineer, addIntern };
 };
+
 const { addManager, addEngineer, addIntern } = addNewEmployee();
 
 const storeTeamMembers = () => {
   fs.writeFileSync("./dist/index.html", generateMarkdown(teamMembers));
 };
 
-// Creating start function to create asynch method
+// Creating start function to create async method
 const start = async () =>{
   while(true){
     await addEmployee();
